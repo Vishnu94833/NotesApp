@@ -2,12 +2,32 @@
     
     <div>
         <div class="form-group">
-            <input class="form-control" type="text" [(ngModel)]='message.firstName'>
+            <input class="form-control" type="text" [(ngModel)]='cust.newEmployee.employeeId'>
         </div>
 
         <div class="form-group">
-                <input class="form-control" type="text" [(ngModel)]='message.employeeId'>
+            <input class="form-control" type="text" [(ngModel)]='cust.newEmployee.firstName'>
+        </div>
+
+        <div class="form-group">
+            <input class="form-control" type="text" [(ngModel)]='cust.newEmployee.lastName'>
+        </div>
+
+        <div class="form-group">
+            <input class="form-control" type="text" [(ngModel)]='cust.newEmployee.address'>
+        </div>
+
+        <div class="form-group">
+            <input class="form-control" type="text" [(ngModel)]='cust.newEmployee.city'>
+        </div>
+
+        <div class="form-group">
+            <input class="form-control" type="text" [(ngModel)]='cust.newEmployee.state'>
+        </div>
+
+        <div class="form-group">
+                <input class="form-control" type="text" [(ngModel)]='cust.newEmployee.orderTotal'>
             </div>
     </div>
-    <button class="btn btn-warning  " (click)='goBack()'>go back to childComponent</button>
+    <button class="btn btn-warning  " (click)='goBack(cust.newEmployee)'>go back to childComponent</button>
 </div>

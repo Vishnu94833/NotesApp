@@ -1,6 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Customers } from '@app/models/customers.model';
+import { Observable } from 'rxjs';
+
+const headerOption = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +14,19 @@ export class CustomerService {
 
   constructor(private http: HttpClient) { }
 
-  mockUrl = 'http://localhost:3000/Customers';
+  mockUrl = 'http://localhost:3000/customers';
+
+  newEmployee: Customers = {
+    id : null,
+    employeeId: null,
+    firstName: '',
+    lastName: '',
+    address: '',
+    city: '',
+    state: '',
+    orderTotal: '',
+  }
+
 
   getCustomers() {
     return this.http.get(this.mockUrl)
@@ -28,15 +45,15 @@ export class CustomerService {
       obj.orderTotal = item.orderTotal
       list.push(obj)
     });
-   return list;
+    console.table(list);
+    return list;
+    
   }
 
 
-  addCustomer(){
-    let res={
-      
-    };
-    return this.http.post(this.mockUrl,res)
+  addCustomer(resp:Customers): Observable<Customers> {
+    return this.http.post<Customers>(this.mockUrl, resp, headerOption);
   }
- 
+
+
 }

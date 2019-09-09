@@ -41,11 +41,11 @@ export class ParentComponent implements OnInit {
       )  
   }
 
-  goBack(){
+  goBack(message:any){
     // this.route.navigateByUrl('customers')
-    this.cust.addCustomer().subscribe(res => console.log(res)
+    this.cust.addCustomer(message).subscribe(res => console.log(res)
     )
-    console.log('success ***********************');
+    console.log('success ***********************',message);
     
   }
 

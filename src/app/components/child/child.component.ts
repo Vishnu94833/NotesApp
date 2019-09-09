@@ -44,29 +44,29 @@ export class ChildComponent implements OnInit {
 
   bindCustomers(){
     this.cust.getCustomers().subscribe(res => 
-      this.message = this.cust.customers(res)
+      this.vm.customerList = this.cust.customers(res)
     )
   }
-  // newMessage(user: any) {
-  //   this.route.navigateByUrl('customer/edit/'+user.employeeId)
-  //   for (let i = 0; i <= this.message.length - 1; i++) {
-  //     if (user.employeeId == this.message[i].employeeId) {
-  //       this.data.changeMessage(this.message[i])
-  //     }
-  //   }
-  // }
+  newMessage(user: any) {
+    this.route.navigateByUrl('customer/edit/'+user.employeeId)
+    for (let i = 0; i <= this.message.length - 1; i++) {
+      if (user.employeeId == this.cust.newEmployee[i].employeeId) {
+        this.data.changeMessage(this.cust.newEmployee[i])
+      }
+    }
+  }
 
   addNewCustomer(){
     this.route.navigateByUrl('customer/add');
     this.message = ''
   }
 
-  // deleteCustomer(user : any){
-  //   this.route.navigateByUrl('customer/delete/'+user.employeeId)
-  //   for (let i = 0; i <= this.message.length - 1; i++) {
-  //     if (user.employeeId == this.message[i].employeeId) {
-  //       this.data.changeMessage(this.message[i])
-  //     }
-  //   }
-  // }
+  deleteCustomer(user : any){
+    this.route.navigateByUrl('customer/delete/'+user.employeeId)
+    for (let i = 0; i <= this.message.length - 1; i++) {
+      if (user.employeeId == this.message[i].employeeId) {
+        this.data.changeMessage(this.message[i])
+      }
+    }
+  }
 }

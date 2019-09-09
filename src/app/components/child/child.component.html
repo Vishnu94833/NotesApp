@@ -23,7 +23,7 @@
                 <th></th>
                 <th></th>
             </tr>
-            <tr *ngFor='let users of message;let i = index' >
+            <tr *ngFor='let users of vm.customerList;let i = index' >
                 <td>{{users.firstName}}</td>
                 <td>{{users.lastName}}</td>
                 <td>{{users.address}}</td>
@@ -36,3 +36,5 @@
         </table>
     </div>
 </div>
+
+

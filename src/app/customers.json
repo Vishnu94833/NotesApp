@@ -1,31 +1,81 @@
 {
-    "Customers": [
-        {
-            "employeeId": "168901",
-            "firstName": "Vishnu",
-            "lastName": "Vel",
-            "address": "Krishnarajapura",
-            "city": "Bangalore",
-            "state": "Karnataka",
-            "orderTotal": "1234"
-        },
-        {
-            "employeeId": "168902",
-            "firstName": "Aastha",
-            "lastName": "Gupta",
-            "address": "Marathahalli",
-            "city": "Bangalore",
-            "state": "Karnataka",
-            "orderTotal": "1234"
-        },
-        {
-            "employeeId": "168903",
-            "firstName": "Jyoti",
-            "lastName": "Prajapati",
-            "address": "Kalyan Nagar",
-            "city": "Bangalore",
-            "state": "Karnataka",
-            "orderTotal": "1234"
-        }
-    ]
+  "Customers": [
+    {
+      "employeeId": "168901",
+      "firstName": "Vishnu",
+      "lastName": "Vel",
+      "address": "Krishnarajapura",
+      "city": "Bangalore",
+      "state": "Karnataka",
+      "orderTotal": "1234"
+    },
+    {
+      "employeeId": "168902",
+      "firstName": "Aastha",
+      "lastName": "Gupta",
+      "address": "Marathahalli",
+      "city": "Bangalore",
+      "state": "Karnataka",
+      "orderTotal": "1234"
+    },
+    {
+      "employeeId": "168903",
+      "firstName": "Jyoti",
+      "lastName": "Prajapati",
+      "address": "Kalyan Nagar",
+      "city": "Bangalore",
+      "state": "Karnataka",
+      "orderTotal": "1234"
+    },
+    {
+      "employeeId": 122222,
+      "firstName": "madah",
+      "lastName": "",
+      "address": "",
+      "city": "",
+      "state": "",
+      "orderTotal": "",
+      "id": "w_e9zIb"
+    },
+    {
+      "employeeId": 122222,
+      "firstName": "madah",
+      "lastName": "",
+      "address": "",
+      "city": "",
+      "state": "",
+      "orderTotal": "",
+      "id": "ZDGVgRH"
+    },
+    {
+      "id": "VNfHsh2",
+      "employeeId": null,
+      "firstName": "",
+      "lastName": "",
+      "address": "",
+      "city": "",
+      "state": "",
+      "orderTotal": ""
+    },
+    {
+      "id": "4TiMxnm",
+      "employeeId": null,
+      "firstName": "",
+      "lastName": "",
+      "address": "",
+      "city": "",
+      "state": "",
+      "orderTotal": ""
+    },
+    {
+      "id": "aPh3HUa",
+      "employeeId": null,
+      "firstName": "",
+      "lastName": "",
+      "address": "",
+      "city": "",
+      "state": "",
+      "orderTotal": ""
+    }
+  ]
 }
