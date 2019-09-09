@@ -1,4 +1,5 @@
+import { Customers } from "../customers.model";
+
 export class UserLoginModel{
-    emailId : string = '';
-    password : string = '';
+    public customerList = {};
 }

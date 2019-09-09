@@ -3,6 +3,7 @@ import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { merge } from 'rxjs';
 import { filter, map, mergeMap } from 'rxjs/operators';
+import { CustomerService } from './services/customer.service';
 
 @Component({
   selector: 'app-root',
@@ -20,6 +21,7 @@ export class AppComponent implements OnInit {
 
   }
   ngOnInit() {
+
     const onNavigationEnd = this.router.events.pipe(filter(event => event instanceof NavigationEnd));
 
     // Change page title on navigation or language change, based on route data

@@ -16,6 +16,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '@app/services/dataservice.service';
 import { Router } from '@angular/router';
+import { CustomerService } from '@app/services/customer.service';
 
 
 @Component({
@@ -27,7 +28,7 @@ export class ParentComponent implements OnInit {
 
   message:any;
 
-  constructor(private data: DataService,private route:Router) { }
+  constructor(private data: DataService,private route:Router,private cust:CustomerService) { }
 
   ngOnInit() {
     this.data.currentMessage.subscribe(
@@ -41,7 +42,11 @@ export class ParentComponent implements OnInit {
   }
 
   goBack(){
-    this.route.navigateByUrl('customers')
+    // this.route.navigateByUrl('customers')
+    this.cust.addCustomer().subscribe(res => console.log(res)
+    )
+    console.log('success ***********************');
+    
   }
 
 }
