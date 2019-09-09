@@ -16,18 +16,6 @@ export class CustomerService {
 
   mockUrl = 'http://localhost:3000/customers';
 
-  newEmployee: Customers = {
-    id : null,
-    employeeId: null,
-    firstName: '',
-    lastName: '',
-    address: '',
-    city: '',
-    state: '',
-    orderTotal: '',
-  }
-
-
   getCustomers() {
     return this.http.get(this.mockUrl)
   }
@@ -45,15 +33,16 @@ export class CustomerService {
       obj.orderTotal = item.orderTotal
       list.push(obj)
     });
-    console.table(list);
     return list;
-    
   }
 
-
-  addCustomer(resp:Customers): Observable<Customers> {
+  addCustomer(resp: Customers): Observable<Customers> {
     return this.http.post<Customers>(this.mockUrl, resp, headerOption);
   }
 
+  deleteCustomer(id: number): Observable<Customers> {
+    debugger
+    return this.http.delete<Customers>(this.mockUrl + '/' + id, headerOption);
+  }
 
 }
