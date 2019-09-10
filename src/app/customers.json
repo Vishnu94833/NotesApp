@@ -1,14 +1,37 @@
 {
   "Customers": [
     {
-      "id": 168901,
-      "employeeId": "168901",
       "firstName": "Vishnu",
       "lastName": "Kuppan",
+      "gender": 0,
       "address": "Krishnarajapura",
       "city": "Bangalore",
       "state": "Karnataka",
-      "orderTotal": "1234"
+      "orderTotal": "12345555",
+      "id": 168901,
+      "employeeId": "168901"
+    },
+    {
+      "firstName": "Aastha",
+      "lastName": "Gupta",
+      "gender": 1,
+      "address": "Ba",
+      "city": "byby",
+      "state": "hgyg",
+      "orderTotal": "ygygy",
+      "id": "168902",
+      "employeeId": "168902"
+    },
+    {
+      "firstName": "Harshita",
+      "lastName": "Mata",
+      "gender": 1,
+      "address": "Kaggadasapura",
+      "city": "Bangalore",
+      "state": "Karnataka",
+      "orderTotal": "1234",
+      "id": "168903",
+      "employeeId": "168903"
     }
   ]
 }

@@ -1,18 +1,3 @@
-// import { Component, OnInit } from '@angular/core';
-
-// @Component({
-//   selector: 'app-child',
-//   templateUrl: './child.component.html',
-//   styleUrls: ['./child.component.scss']
-// })
-// export class ChildComponent implements OnInit {
-
-//   constructor() { }
-
-//   ngOnInit() {
-//   }
-
-// }
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '@app/services/dataservice.service';
 import { Router } from '@angular/router';
@@ -34,10 +19,7 @@ export class ChildComponent implements OnInit {
     private cust: CustomerService) { }
 
   ngOnInit() {
-    // this.data.currentMessage.subscribe(message =>
-    //   message
-
-    // )
+    this.data.currentMessage.subscribe(message => message)
     this.bindCustomers();
   }
 
@@ -45,60 +27,52 @@ export class ChildComponent implements OnInit {
   bindCustomers() {
     this.cust.getCustomers().subscribe(res => {
       this.vm.customerList = this.cust.customers(res)
-    }
-
-    )
+    })
   }
-  newMessage(user: any) {
-
+  editCustomer(user: any) {
     this.route.navigateByUrl('customer/edit/' + user.employeeId)
-    for (let i = 0; i <= this.vm.customerList.length - 1; i++) {
-      if (user.employeeId == this.vm.customerList[i].employeeId) {
-        console.log(this.vm.customerList[i]);
-        this.vm.newEmployee.id = this.vm.customerList[i].id;
-        this.vm.newEmployee.employeeId = this.vm.customerList[i].employeeId;
-        this.vm.newEmployee.firstName = this.vm.customerList[i].firstName;
-        this.vm.newEmployee.lastName = this.vm.customerList[i].lastName;
-        this.vm.newEmployee.address = this.vm.customerList[i].address;
-        this.vm.newEmployee.city = this.vm.customerList[i].city;
-        this.vm.newEmployee.state = this.vm.customerList[i].state;
-        this.vm.newEmployee.orderTotal = this.vm.customerList[i].orderTotal;
-        // console.log(this.vm.newEmployee);
-
-        this.data.changeMessage(this.vm.newEmployee)
-      }
-    }
+    let customerToDelete = this.cust.deleteCustomerLogic(user.employeeId, this.vm.customerList)
+    this.vm.newEmployee.id = customerToDelete.id;
+    this.vm.newEmployee.employeeId = customerToDelete.employeeId
+    this.vm.newEmployee.firstName = customerToDelete.firstName
+    this.vm.newEmployee.lastName = customerToDelete.lastName
+    this.vm.newEmployee.gender = customerToDelete.gender
+    this.vm.newEmployee.address = customerToDelete.address
+    this.vm.newEmployee.city = customerToDelete.city
+    this.vm.newEmployee.state = customerToDelete.state
+    this.vm.newEmployee.orderTotal = customerToDelete.orderTotal
+    this.bindData(this.vm.newEmployee)
   }
 
   addNewCustomer() {
     this.route.navigateByUrl('customer/add');
-    this.message = ''
+    this.vm.newEmployee.id = null;
+    this.vm.newEmployee.employeeId = null
+    this.vm.newEmployee.firstName = ''
+    this.vm.newEmployee.lastName = ''
+    this.vm.newEmployee.address = ''
+    this.vm.newEmployee.city = ''
+    this.vm.newEmployee.state = ''
+    this.vm.newEmployee.orderTotal = ''
+    this.bindData(this.vm.newEmployee)
   }
 
   deleteCustomer(user: any) {
-    // this.route.navigateByUrl('customer/delete/'+user.employeeId)
+    this.route.navigateByUrl('customer/delete/' + user.employeeId)
+    let customerToDelete = this.cust.deleteCustomerLogic(user.employeeId, this.vm.customerList)
+    this.vm.newEmployee.id = customerToDelete.id;
+    this.vm.newEmployee.employeeId = customerToDelete.employeeId
+    this.vm.newEmployee.firstName = customerToDelete.firstName
+    this.vm.newEmployee.lastName = customerToDelete.lastName
+    this.vm.newEmployee.gender = customerToDelete.gender
+    this.vm.newEmployee.address = customerToDelete.address
+    this.vm.newEmployee.city = customerToDelete.city
+    this.vm.newEmployee.state = customerToDelete.state
+    this.vm.newEmployee.orderTotal = customerToDelete.orderTotal
+    this.bindData(this.vm.newEmployee)
+  }
 
-
-    for (let i = 0; i <= this.vm.customerList.length - 1; i++) {
-      if (user.employeeId == this.vm.customerList[i].employeeId) {
-        // console.log(this.vm.customerList[i]);
-        this.vm.newEmployee.id = this.vm.customerList[i].id;
-        this.vm.newEmployee.employeeId = this.vm.customerList[i].employeeId;
-        this.vm.newEmployee.firstName = this.vm.customerList[i].firstName;
-        this.vm.newEmployee.lastName = this.vm.customerList[i].lastName;
-        this.vm.newEmployee.address = this.vm.customerList[i].address;
-        this.vm.newEmployee.city = this.vm.customerList[i].city;
-        this.vm.newEmployee.state = this.vm.customerList[i].state;
-        this.vm.newEmployee.orderTotal = this.vm.customerList[i].orderTotal;
-        // console.log(this.vm.newEmployee);
-
-        this.data.changeMessage(this.vm.newEmployee)
-        this.cust.deleteCustomer(user.employeeId).subscribe(res => {
-          console.log(res)
-          this.bindCustomers()
-        }
-        )
-      }
-    }
+  bindData(data: any) {
+    this.data.changeMessage(data)
   }
 }

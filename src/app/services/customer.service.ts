@@ -37,12 +37,47 @@ export class CustomerService {
   }
 
   addCustomer(resp: Customers): Observable<Customers> {
-    return this.http.post<Customers>(this.mockUrl, resp, headerOption);
+    let res = {
+      id: resp.employeeId,
+      employeeId: resp.employeeId,
+      firstName: resp.firstName,
+      lastName: resp.lastName,
+      address: resp.address,
+      city: resp.city,
+      state: resp.state,
+      orderTotal: resp.orderTotal
+    }
+    return this.http.post<Customers>(this.mockUrl, res  , headerOption);
   }
 
+  addNewCustomer(){
+    
+  }
+
+  deleteCustomerLogic(customerId: number, customerObject: any) {
+    for (var i = 0; i <= customerObject.length - 1; i++) {
+      let obj = new Customers();
+      if (customerId == customerObject[i].employeeId) {
+        obj.employeeId = customerObject[i].employeeId;
+        obj.firstName = customerObject[i].firstName;
+        obj.lastName = customerObject[i].lastName;
+        obj.city = customerObject[i].city;
+        obj.state = customerObject[i].state;
+        obj.address = customerObject[i].address;
+        obj.orderTotal = customerObject[i].orderTotal;
+        return obj;
+      }
+    }
+  }
+
+
+
   deleteCustomer(id: number): Observable<Customers> {
-    debugger
     return this.http.delete<Customers>(this.mockUrl + '/' + id, headerOption);
+  }
+
+  editCustomer(res: any): Observable<Customers> {
+    return this.http.put<Customers>(this.mockUrl + '/' + res.id,res, headerOption);
   }
 
 }

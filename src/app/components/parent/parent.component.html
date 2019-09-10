@@ -1,33 +1,85 @@
 <div class="my-5 container">
-    
+
     <div>
-        <div class="form-group">
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">Employee Id</span>
+            </div>
             <input class="form-control" type="text" [(ngModel)]='vm.newEmployee.employeeId'>
         </div>
-
-        <div class="form-group">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">First Name</span>
+            </div>
             <input class="form-control" type="text" [(ngModel)]='vm.newEmployee.firstName'>
         </div>
 
-        <div class="form-group">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">Last Name</span>
+            </div>
             <input class="form-control" type="text" [(ngModel)]='vm.newEmployee.lastName'>
         </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01">Gender</label>
+            </div>
+            <select class="custom-select" id="inputGroupSelect01" (change)="onGenderSelect($event.target.value)"
+                [(ngModel)]="vm.newEmployee.gender ">
+                <!-- <option selected>Choose...</option>
+                <option value="1">Male</option>
+                <option value="2">Female</option>
+                <option value="3">Other</option> -->
+                <option *ngFor="let item of gender" value="{{ item.Value }}">
+                        {{ item.Label }}
+                      </option>
+            </select>
+        </div>
 
-        <div class="form-group">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">Address</span>
+            </div>
             <input class="form-control" type="text" [(ngModel)]='vm.newEmployee.address'>
         </div>
 
-        <div class="form-group">
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">City</span>
+            </div>
             <input class="form-control" type="text" [(ngModel)]='vm.newEmployee.city'>
         </div>
 
-        <div class="form-group">
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">State</span>
+            </div>
             <input class="form-control" type="text" [(ngModel)]='vm.newEmployee.state'>
         </div>
 
-        <div class="form-group">
-                <input class="form-control" type="text" [(ngModel)]='vm.newEmployee.orderTotal'>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">Order Total</span>
             </div>
+            <input class="form-control" type="text" [(ngModel)]='vm.newEmployee.orderTotal'>
+        </div>
+
     </div>
-    <button class="btn btn-warning  " (click)='goBack(vm.newEmployee)'>go back to childComponent</button>
+
+    <div class="float-right">
+        <button class="btn" routerLink='/customers'>Back</button>
+        <span *ngIf='vm.isAddBtnDisplay'>
+            <button class="btn btn-success  ml-5" (click)='addCustomer(vm.newEmployee)'>Add</button>
+        </span>
+        <span *ngIf='vm.isUpdateBtnDisplay'>
+            <button class="btn btn-warning ml-5" (click)='updateCustomer(vm.newEmployee)'>Update</button>
+        </span>
+        <span *ngIf='vm.isDeleteBtnDisplay'>
+            <button class="btn btn-danger  ml-5" (click)='deleteCustomer(vm.newEmployee.id)'>Delete</button>
+        </span>
+    </div>
 </div>
