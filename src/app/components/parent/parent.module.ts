@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     FormsModule,
     ParentRoutingModule
-  ]
+  ],
+  entryComponents: [ParentComponent]
 })
 export class ParentModule { }

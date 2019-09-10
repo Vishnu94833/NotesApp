@@ -29,18 +29,23 @@ export class ChildComponent implements OnInit {
       this.vm.customerList = this.cust.customers(res)
     })
   }
+
+  bindFieldValue(response: any) {
+    this.vm.newEmployee.id = response.id;
+    this.vm.newEmployee.employeeId = response.employeeId
+    this.vm.newEmployee.firstName = response.firstName
+    this.vm.newEmployee.lastName = response.lastName
+    this.vm.newEmployee.gender = response.gender
+    this.vm.newEmployee.address = response.address
+    this.vm.newEmployee.city = response.city
+    this.vm.newEmployee.state = response.state
+    this.vm.newEmployee.orderTotal = response.orderTotal
+  }
+
   editCustomer(user: any) {
     this.route.navigateByUrl('customer/edit/' + user.employeeId)
-    let customerToDelete = this.cust.deleteCustomerLogic(user.employeeId, this.vm.customerList)
-    this.vm.newEmployee.id = customerToDelete.id;
-    this.vm.newEmployee.employeeId = customerToDelete.employeeId
-    this.vm.newEmployee.firstName = customerToDelete.firstName
-    this.vm.newEmployee.lastName = customerToDelete.lastName
-    this.vm.newEmployee.gender = customerToDelete.gender
-    this.vm.newEmployee.address = customerToDelete.address
-    this.vm.newEmployee.city = customerToDelete.city
-    this.vm.newEmployee.state = customerToDelete.state
-    this.vm.newEmployee.orderTotal = customerToDelete.orderTotal
+    let editFieldOfCustomer = this.cust.deleteCustomerLogic(user.employeeId, this.vm.customerList)
+    this.bindFieldValue(editFieldOfCustomer)
     this.bindData(this.vm.newEmployee)
   }
 
@@ -50,6 +55,7 @@ export class ChildComponent implements OnInit {
     this.vm.newEmployee.employeeId = null
     this.vm.newEmployee.firstName = ''
     this.vm.newEmployee.lastName = ''
+    this.vm.newEmployee.gender = 0
     this.vm.newEmployee.address = ''
     this.vm.newEmployee.city = ''
     this.vm.newEmployee.state = ''
@@ -60,19 +66,12 @@ export class ChildComponent implements OnInit {
   deleteCustomer(user: any) {
     this.route.navigateByUrl('customer/delete/' + user.employeeId)
     let customerToDelete = this.cust.deleteCustomerLogic(user.employeeId, this.vm.customerList)
-    this.vm.newEmployee.id = customerToDelete.id;
-    this.vm.newEmployee.employeeId = customerToDelete.employeeId
-    this.vm.newEmployee.firstName = customerToDelete.firstName
-    this.vm.newEmployee.lastName = customerToDelete.lastName
-    this.vm.newEmployee.gender = customerToDelete.gender
-    this.vm.newEmployee.address = customerToDelete.address
-    this.vm.newEmployee.city = customerToDelete.city
-    this.vm.newEmployee.state = customerToDelete.state
-    this.vm.newEmployee.orderTotal = customerToDelete.orderTotal
+    this.bindFieldValue(customerToDelete)
     this.bindData(this.vm.newEmployee)
   }
 
   bindData(data: any) {
     this.data.changeMessage(data)
   }
+
 }

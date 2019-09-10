@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, TemplateRef, ViewChildren } from '@angular/core';
 import { DataService } from '@app/services/dataservice.service';
 import { Router } from '@angular/router';
 import { CustomerService } from '@app/services/customer.service';
 import { UserLoginModel } from '@app/models/view-models/user.model';
+import { MatDialog } from '@angular/material';
 
 
 @Component({
@@ -14,8 +15,12 @@ export class ParentComponent implements OnInit {
 
   message: any;
   public vm: UserLoginModel = new UserLoginModel();
+  @ViewChildren('popup') popUpModal: TemplateRef<any>;
 
-  constructor(private data: DataService, private route: Router, private cust: CustomerService) { }
+  constructor(private data: DataService, 
+    private route: Router, 
+    private cust: CustomerService,
+    private dialog:MatDialog) { }
 
   ngOnInit() {
     this.bindData()
@@ -23,7 +28,7 @@ export class ParentComponent implements OnInit {
 
   }
 
-  gender = [{ Value: '0', Label: 'Male' }, { Value: '1', Label: 'Female' }, { Value: '2', Label: 'Other' }]
+  gender = [{ Value: '0', Label: 'Select One...' }, { Value: '1', Label: 'Male' }, { Value: '2', Label: 'Female' }]
 
   bindData() {
     this.btnDisplay()
@@ -45,15 +50,24 @@ export class ParentComponent implements OnInit {
   }
   addCustomer(message: any) {
     this.cust.addCustomer(message).subscribe(res => console.log(res))
-
+    this.routeBackToCustomers()
   }
 
   updateCustomer(response: any) {
     this.cust.editCustomer(response).subscribe(res => console.log(res))
+    this.routeBackToCustomers()
   }
 
   deleteCustomer(response: number) {
     this.cust.deleteCustomer(response).subscribe(res => console.log(res))
+    this.routeBackToCustomers()
+  }
+
+  routeBackToCustomers(){
+    setTimeout(()=>{
+      // this.openDialogContainer()
+      this.route.navigateByUrl('customers')
+    },1000)
   }
 
   btnDisplay() {
@@ -62,11 +76,22 @@ export class ParentComponent implements OnInit {
     } else if (this.route.url.includes('edit')) {
       this.vm.isUpdateBtnDisplay = !this.vm.isUpdateBtnDisplay
     } else if (this.route.url.includes('delete')) {
+      
       this.vm.isDeleteBtnDisplay = !this.vm.isDeleteBtnDisplay
     }
   }
 
   onGenderSelect(event: string) {
     this.vm.newEmployee.gender = parseInt(event);
+  }
+
+  openDialogContainer(): void {
+    const dialogRef = this.dialog.open(this.popUpModal, {
+      width: '350px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 }

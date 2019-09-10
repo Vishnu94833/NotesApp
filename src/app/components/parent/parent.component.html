@@ -6,27 +6,41 @@
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1">Employee Id</span>
             </div>
-            <input class="form-control" type="text" [(ngModel)]='vm.newEmployee.employeeId'>
+            <input 
+            class="form-control" 
+            type="text" 
+            [ngStyle]="{'cursor': vm.isDeleteBtnDisplay ? 'not-allowed' : 'text'}"
+            [(ngModel)]='vm.newEmployee.employeeId'
+            [disabled]="vm.isDeleteBtnDisplay"
+            >
         </div>
         <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1">First Name</span>
             </div>
-            <input class="form-control" type="text" [(ngModel)]='vm.newEmployee.firstName'>
+            <input 
+            class="form-control" 
+            type="text"
+            [ngStyle]="{'cursor': vm.isDeleteBtnDisplay ? 'not-allowed' : 'text'}" 
+            [(ngModel)]='vm.newEmployee.firstName'
+            [disabled]="vm.isDeleteBtnDisplay"
+            >
         </div>
 
         <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1">Last Name</span>
             </div>
-            <input class="form-control" type="text" [(ngModel)]='vm.newEmployee.lastName'>
+            <input class="form-control" type="text" [(ngModel)]='vm.newEmployee.lastName'             [ngStyle]="{'cursor': vm.isDeleteBtnDisplay ? 'not-allowed' : 'text'}"
+            [disabled]="vm.isDeleteBtnDisplay">
         </div>
         <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <label class="input-group-text" for="inputGroupSelect01">Gender</label>
             </div>
             <select class="custom-select" id="inputGroupSelect01" (change)="onGenderSelect($event.target.value)"
-                [(ngModel)]="vm.newEmployee.gender ">
+                [(ngModel)]="vm.newEmployee.gender "             [ngStyle]="{'cursor': vm.isDeleteBtnDisplay ? 'not-allowed' : 'pointer'}"
+                [disabled]="vm.isDeleteBtnDisplay">
                 <!-- <option selected>Choose...</option>
                 <option value="1">Male</option>
                 <option value="2">Female</option>
@@ -41,7 +55,8 @@
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1">Address</span>
             </div>
-            <input class="form-control" type="text" [(ngModel)]='vm.newEmployee.address'>
+            <input class="form-control" type="text"             [ngStyle]="{'cursor': vm.isDeleteBtnDisplay ? 'not-allowed' : 'text'}"
+            [(ngModel)]='vm.newEmployee.address' [disabled]="vm.isDeleteBtnDisplay">
         </div>
 
 
@@ -49,7 +64,8 @@
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1">City</span>
             </div>
-            <input class="form-control" type="text" [(ngModel)]='vm.newEmployee.city'>
+            <input class="form-control" type="text"             [ngStyle]="{'cursor': vm.isDeleteBtnDisplay ? 'not-allowed' : 'text'}"
+            [(ngModel)]='vm.newEmployee.city' [disabled]="vm.isDeleteBtnDisplay">
         </div>
 
 
@@ -57,7 +73,8 @@
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1">State</span>
             </div>
-            <input class="form-control" type="text" [(ngModel)]='vm.newEmployee.state'>
+            <input class="form-control" type="text"             [ngStyle]="{'cursor': vm.isDeleteBtnDisplay ? 'not-allowed' : 'text'}"
+            [(ngModel)]='vm.newEmployee.state' [disabled]="vm.isDeleteBtnDisplay">
         </div>
 
 
@@ -65,7 +82,8 @@
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1">Order Total</span>
             </div>
-            <input class="form-control" type="text" [(ngModel)]='vm.newEmployee.orderTotal'>
+            <input class="form-control" type="text"             [ngStyle]="{'cursor': vm.isDeleteBtnDisplay ? 'not-allowed' : 'text'}"
+            [(ngModel)]='vm.newEmployee.orderTotal' [disabled]="vm.isDeleteBtnDisplay">
         </div>
 
     </div>
@@ -83,3 +101,7 @@
         </span>
     </div>
 </div>
+
+<ng-template #popup>
+    <h3>Pop Up</h3>
+</ng-template>

@@ -16,7 +16,7 @@ const routes: Routes = [
         loadChildren: 'app/components/parent/parent.module#ParentModule'
       },
       // Fallback when no prior route is matched
-      { path: '', redirectTo: '/customers', pathMatch: 'full' }
+      { path: '**', redirectTo: '/customers', pathMatch: 'full' }
   ])
 
   // { path: 'customers', component: ChildComponent },

@@ -7,7 +7,7 @@ import { extract } from '@app/core/export';
 const routes: Routes = [
 
   GlobalHeaderService.childRoutes([
-    { path: '', redirectTo: '/customers', pathMatch: 'full' },
+    { path: '**', redirectTo: '/customers', pathMatch: 'full' },
     { path: 'customers', component: ChildComponent, data: { title: extract('Customers') } }
   ])
 
