@@ -67,8 +67,6 @@ export class ParentComponent implements OnInit {
   }
 
   onGenderSelect(event: string) {
-    console.log(event);
-    
     this.vm.newEmployee.gender = parseInt(event);
   }
 }

@@ -8,7 +8,4 @@ export class Customers {
     city: string = '';
     state: string = '';
     orderTotal: string = '';
-
-
-
 }
