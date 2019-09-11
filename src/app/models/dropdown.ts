@@ -1,5 +1,5 @@
 export class Dropdown {
     public Label: string = '';
-    public Value: number = 0;
+    public Value: string = '';
   }
   

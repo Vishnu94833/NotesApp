@@ -18,7 +18,11 @@ export class ChildComponent implements OnInit {
   constructor(private data: DataService, private route: Router,
     private cust: CustomerService) { }
 
+
   ngOnInit() {
+
+
+
     this.data.currentMessage.subscribe(message => message)
     this.bindCustomers();
   }
@@ -26,12 +30,15 @@ export class ChildComponent implements OnInit {
 
   bindCustomers() {
     this.cust.getCustomers().subscribe(res => {
+      console.log(parseInt(res[2].employeeId));
       this.vm.customerList = this.cust.customers(res)
     })
   }
 
   bindFieldValue(response: any) {
-    this.vm.newEmployee.id = response.id;
+
+
+    this.vm.newEmployee.id = response.employeeId;
     this.vm.newEmployee.employeeId = response.employeeId
     this.vm.newEmployee.firstName = response.firstName
     this.vm.newEmployee.lastName = response.lastName
@@ -55,7 +62,7 @@ export class ChildComponent implements OnInit {
     this.vm.newEmployee.employeeId = null
     this.vm.newEmployee.firstName = ''
     this.vm.newEmployee.lastName = ''
-    this.vm.newEmployee.gender = 0
+    this.vm.newEmployee.gender = ''
     this.vm.newEmployee.address = ''
     this.vm.newEmployee.city = ''
     this.vm.newEmployee.state = ''
@@ -72,6 +79,14 @@ export class ChildComponent implements OnInit {
 
   bindData(data: any) {
     this.data.changeMessage(data)
+  }
+  onSearch() {
+    let searchTerm = this.vm.searchCustomer;
+    this.vm.customerList.filter(function (search) {
+      console.log(search.employeeId == searchTerm);
+
+      return search.employeeId == searchTerm
+    })
   }
 
 }

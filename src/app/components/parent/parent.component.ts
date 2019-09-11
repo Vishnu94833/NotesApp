@@ -17,36 +17,32 @@ export class ParentComponent implements OnInit {
   public vm: UserLoginModel = new UserLoginModel();
   @ViewChildren('popup') popUpModal: TemplateRef<any>;
 
-  constructor(private data: DataService, 
-    private route: Router, 
+  constructor(private data: DataService,
+    private route: Router,
     private cust: CustomerService,
-    private dialog:MatDialog) { }
+    private dialog: MatDialog) { }
 
   ngOnInit() {
-    this.bindData()
-    console.log(this.gender);
-
+    this.bindAddCustomer()
   }
 
-  gender = [{ Value: '0', Label: 'Select One...' }, { Value: '1', Label: 'Male' }, { Value: '2', Label: 'Female' }]
+  gender = [{ Value: 'select', Label: 'Select One...' }, { Value: 'Male', Label: 'Male' }, { Value: 'Female', Label: 'Female' }]
 
   bindData() {
     this.btnDisplay()
     this.data.currentMessage.subscribe(
       response => {
-        this.vm.newEmployee.id = response.employeeId;
-        this.vm.newEmployee.employeeId = response.employeeId;
-        this.vm.newEmployee.firstName = response.firstName;
-        this.vm.newEmployee.lastName = response.lastName;
-        this.vm.newEmployee.gender = response.gender;
-        this.vm.newEmployee.address = response.address;
-        this.vm.newEmployee.city = response.city;
-        this.vm.newEmployee.state = response.state;
-        this.vm.newEmployee.orderTotal = response.orderTotal;
-        console.log(response);
-
+        this.customerById(response.employeeId);
       }
     )
+  }
+  bindAddCustomer(){
+    if(this.route.url.includes('add')){
+    this.btnDisplay()
+    }
+    else {
+      this.bindData()
+    }
   }
   addCustomer(message: any) {
     this.cust.addCustomer(message).subscribe(res => console.log(res))
@@ -63,11 +59,25 @@ export class ParentComponent implements OnInit {
     this.routeBackToCustomers()
   }
 
-  routeBackToCustomers(){
-    setTimeout(()=>{
+  customerById(id: number) {
+    this.cust.getCustomerById(id).subscribe((response : any) => {
+      this.vm.newEmployee.id = response.employeeId;
+      this.vm.newEmployee.employeeId = response.employeeId;
+      this.vm.newEmployee.firstName = response.firstName;
+      this.vm.newEmployee.lastName = response.lastName;
+      this.vm.newEmployee.gender = response.gender;
+      this.vm.newEmployee.address = response.address;
+      this.vm.newEmployee.city = response.city;
+      this.vm.newEmployee.state = response.state;
+      this.vm.newEmployee.orderTotal = response.orderTotal;
+    })
+  }
+
+  routeBackToCustomers() {
+    setTimeout(() => {
       // this.openDialogContainer()
       this.route.navigateByUrl('customers')
-    },1000)
+    }, 1000)
   }
 
   btnDisplay() {
@@ -76,22 +86,20 @@ export class ParentComponent implements OnInit {
     } else if (this.route.url.includes('edit')) {
       this.vm.isUpdateBtnDisplay = !this.vm.isUpdateBtnDisplay
     } else if (this.route.url.includes('delete')) {
-      
+
       this.vm.isDeleteBtnDisplay = !this.vm.isDeleteBtnDisplay
     }
   }
 
   onGenderSelect(event: string) {
-    this.vm.newEmployee.gender = parseInt(event);
+    this.vm.newEmployee.gender = event;
   }
 
   openDialogContainer(): void {
     const dialogRef = this.dialog.open(this.popUpModal, {
       width: '350px'
     });
-
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
     });
   }
 }

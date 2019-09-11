@@ -3,45 +3,57 @@
     {
       "firstName": "Vishnu",
       "lastName": "Kuppan",
-      "gender": null,
+      "gender": "Male",
       "address": "Krishnarajapura",
       "city": "Bangalore",
       "state": "Karnataka",
-      "orderTotal": "12345555",
+      "orderTotal": "12345",
       "id": 168901,
       "employeeId": "168901"
     },
     {
       "firstName": "Aastha",
       "lastName": "Gupta",
-      "gender": 1,
+      "gender": "Female",
       "address": "Marathahalli",
       "city": "Bangalore",
       "state": "Karnataka",
       "orderTotal": "12345",
-      "id": "168902",
+      "id": 168902,
       "employeeId": "168902"
     },
     {
       "firstName": "Harshita",
       "lastName": "Mata",
-      "gender": 2,
-      "address": "C V Ramanagar",
+      "gender": "Female",
+      "address": "Kaggadasapura",
       "city": "Bangalore",
       "state": "Karnataka",
       "orderTotal": "1234",
-      "id": "168903",
+      "id": 168903,
       "employeeId": "168903"
     },
     {
-      "id": "168904",
+      "id": 168904,
       "employeeId": "168904",
       "firstName": "Vishal",
       "lastName": "Gowda",
+      "gender": "Male",
       "address": "Kammanahalli",
       "city": "Bangalore",
       "state": "Karnataka",
       "orderTotal": "1234"
+    },
+    {
+      "firstName": "Vinod",
+      "lastName": "Kumar",
+      "gender": "Male",
+      "address": "KG Halli",
+      "city": "Bangalore",
+      "state": "Karnataka",
+      "orderTotal": "1234",
+      "id": 168906,
+      "employeeId": "168906"
     }
   ]
 }

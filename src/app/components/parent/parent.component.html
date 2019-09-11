@@ -41,10 +41,7 @@
             <select class="custom-select" id="inputGroupSelect01" (change)="onGenderSelect($event.target.value)"
                 [(ngModel)]="vm.newEmployee.gender "             [ngStyle]="{'cursor': vm.isDeleteBtnDisplay ? 'not-allowed' : 'pointer'}"
                 [disabled]="vm.isDeleteBtnDisplay">
-                <!-- <option selected>Choose...</option>
-                <option value="1">Male</option>
-                <option value="2">Female</option>
-                <option value="3">Other</option> -->
+
                 <option *ngFor="let item of gender" value="{{ item.Value }}">
                         {{ item.Label }}
                       </option>

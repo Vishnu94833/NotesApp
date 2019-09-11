@@ -13,8 +13,12 @@
                     <span class="fa fa-filter"></span>
                 </div>
             </div>
-            <input class="form-control " type="filter">
+            <input class="form-control "
+            [(ngModel)]="vm.searchCustomer"
+            type="text"
+            (keyup.enter)="onSearch()">
         </div>
+        <h2>{{marvelHeroes | json}}</h2>
         <button class="btn btn-dark" (click)='addNewCustomer()'>Add New Customer</button>
     </div>
 
@@ -23,6 +27,7 @@
     <div class="my-3">
         <table class="table table-striped">
             <tr>
+                <th>Gender</th>
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Address</th>
@@ -33,6 +38,10 @@
                 <th></th>
             </tr>
             <tr *ngFor='let users of vm.customerList;let i = index'>
+                <td>
+                    <img *ngIf='users.gender == "Male"' src="../../../assets/images/male.png" >
+                    <img *ngIf='users.gender == "Female"' src="../../../assets/images/female.png" >
+                </td>
                 <td>{{users.firstName}}</td>
                 <td>{{users.lastName}}</td>
                 <td>{{users.address}}</td>
