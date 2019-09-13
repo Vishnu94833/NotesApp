@@ -8,6 +8,14 @@ const routes: Routes = [
 
     GlobalHeaderService.childRoutes([
       {
+        path: 'login',
+        loadChildren: 'app/components/login/login.module#LoginModule'
+      },
+      {
+        path: 'register',
+        loadChildren: 'app/components/register/register.module#RegisterModule'
+      },
+      {
         path: 'customers',
         loadChildren: 'app/components/child/child.module#ChildModule'
       },
@@ -16,7 +24,7 @@ const routes: Routes = [
         loadChildren: 'app/components/parent/parent.module#ParentModule'
       },
       // Fallback when no prior route is matched
-      { path: '**', redirectTo: '/customers', pathMatch: 'full' }
+      { path: '', redirectTo: '/login', pathMatch: 'full' }
   ])
 
   // { path: 'customers', component: ChildComponent },

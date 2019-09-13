@@ -1,0 +1,31 @@
+<div class="card my-5 col-6 register-page">
+        <div class="container my-5">
+            <div class="form-group">
+                <label for="userId">Username:</label>
+                <input 
+                type="text" 
+                name="userId" 
+                class="form-control"
+                [(ngModel)]='vm.registerArray.userName'>
+            </div>
+            <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input 
+                    type="email" 
+                    name="email" 
+                    class="form-control"
+                    [(ngModel)]='vm.registerArray.email'>
+                </div>
+            <div class="form-group">
+                <label for="pswd">Password:</label>
+                <input 
+                type="password" 
+                name="pswd" 
+                class="form-control"
+                [(ngModel)]='vm.registerArray.password'>
+            </div>
+            <button class="btn btn-block btn-block" (click)='register(vm.registerArray)'>Register</button>
+            <!-- <a routerLink='/register'>Sign Up</a> -->
+            <!-- <button (click)='goToRegister()'>register</button> -->
+        </div>
+    </div>

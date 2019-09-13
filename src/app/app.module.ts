@@ -14,11 +14,16 @@ import { DataService } from './services/dataservice.service';
 import { ParentModule } from './components/parent/parent.module';
 import { ChildModule } from './components/child/child.module';
 import { GlobalheaderModule } from './components/globalheader/globalheader.module';
+import { LoginModule } from './components/login/login.module';
+import { EncryptpasswordService } from './services/encryptpassword.service';
+import { RegisterModule } from './components/register/register.module';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     GlobalheaderModule,
+    LoginModule,
+    RegisterModule,
     ParentModule,
     ChildModule,
 
@@ -29,7 +34,7 @@ import { GlobalheaderModule } from './components/globalheader/globalheader.modul
     BrowserAnimationsModule,
     AppRoutingModule
   ],
-  providers: [DataService],
+  providers: [DataService,EncryptpasswordService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
 })

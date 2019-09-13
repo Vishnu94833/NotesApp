@@ -1,20 +1,18 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { GlobalHeaderService } from '@app/services/globalheader.service';
-import { ChildComponent } from './child.component';
 import { extract } from '@app/core/export';
+import { LoginComponent } from './login.component';
 
 const routes: Routes = [
-
   GlobalHeaderService.childRoutes([
-    // { path: '**', redirectTo: '/customers', pathMatch: 'full' },
-    { path: 'customers', component: ChildComponent, data: { title: extract('Customers') } }
+    { path: '', redirectTo: '/login', pathMatch: 'full' },
+    { path: 'login', component: LoginComponent, data: { title: extract('Customers') } }
   ])
-
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class ChildRoutingModule { }
+export class LoginRoutingModule { }
