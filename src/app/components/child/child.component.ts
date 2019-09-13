@@ -20,9 +20,6 @@ export class ChildComponent implements OnInit {
 
 
   ngOnInit() {
-
-
-
     this.data.currentMessage.subscribe(message => message)
     this.bindCustomers();
   }
@@ -30,7 +27,6 @@ export class ChildComponent implements OnInit {
 
   bindCustomers() {
     this.cust.getCustomers().subscribe(res => {
-      console.log(parseInt(res[2].employeeId));
       this.vm.customerList = this.cust.customers(res)
     })
   }

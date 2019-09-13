@@ -6,6 +6,7 @@ export class UserLoginModel {
     newEmployee: Customers = new Customers();
     public gender: Array<GenderDropdownModel> = new Array<GenderDropdownModel>();
     searchCustomer:any;
+    customerId : number = 0;
     // buttons display
     isUpdateBtnDisplay: boolean = false;
     isDeleteBtnDisplay: boolean = false;
