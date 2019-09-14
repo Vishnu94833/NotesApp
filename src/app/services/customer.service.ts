@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Customers } from '@app/models/customers.model';
 import { Observable } from 'rxjs';
+import * as moment from 'moment';
 
 const headerOption = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -14,7 +15,7 @@ export class CustomerService {
 
   constructor(private http: HttpClient) { }
 
-  mockUrl = 'http://localhost:3000/customers';
+  mockUrl = 'http://localhost:3000/employees';
 
   getCustomers(): Observable<Customers> {
     return this.http.get<Customers>(this.mockUrl)
@@ -76,8 +77,16 @@ export class CustomerService {
     return this.http.delete<Customers>(this.mockUrl + '/' + id, headerOption);
   }
 
-  editCustomer(res: any): Observable<Customers> {
+  editCustomer(res: Customers): Observable<Customers> {
     return this.http.put<Customers>(this.mockUrl + '/' + res.id,res, headerOption);
+  }
+
+  public FindLastUpdatedDate(currentDate: string): string {
+    return moment(currentDate).format('DD MMM YY');
+  }
+
+  public FindLastUpdatedTime(currentDate: string): string {
+    return moment(currentDate).format('DD MMM YY');
   }
 
 }

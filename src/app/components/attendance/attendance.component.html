@@ -1,0 +1,31 @@
+<div class="card my-5 col-6 register-page">
+    <div class="container my-5">
+        <div class="form-group">
+            <label for="empId">Employee ID:</label>
+            <input 
+            type="text" 
+            name="empId" 
+            class="form-control"
+            [(ngModel)]='vm.attendnce.employeeId'>
+        </div>
+        <div class="form-group">
+                <label for="iTime">In Time:</label>
+                <input 
+                type="time" 
+                name="iTime" 
+                class="form-control"
+                [(ngModel)]='vm.attendnce.inTime'>
+            </div>
+        <div class="form-group">
+            <label for="oTime">Out Time:</label>
+            <input 
+            type="time" 
+            name="oTime" 
+            class="form-control"
+            [(ngModel)]='vm.attendnce.outTime'>
+        </div>
+        <button class="btn btn-block btn-block" (click)='submit(vm.attendnce)'>Submit</button>
+        <!-- <a routerLink='/register'>Sign Up</a> -->
+        <!-- <button (click)='goToRegister()'>register</button> -->
+    </div>
+</div>

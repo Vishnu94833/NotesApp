@@ -1,5 +1,20 @@
 {
-  "Customers": [
+  "Login": [
+    {
+      "userName": "vishnu@gmail.com",
+      "password": "ojXLzPt/RfApuwSOAdy7aw==",
+      "id": 1
+    }
+  ],
+  "Register": [
+    {
+      "userName": "Vishnu94833",
+      "email": "vishnu@gmail.com",
+      "password": "ojXLzPt/RfApuwSOAdy7aw==",
+      "id": 1
+    }
+  ],
+  "Employees": [
     {
       "firstName": "Vishnu",
       "lastName": "Kuppan",
@@ -7,7 +22,6 @@
       "address": "Krishnarajapura",
       "city": "Bangalore",
       "state": "Karnataka",
-      "orderTotal": "12345",
       "id": 168901,
       "employeeId": "168901"
     },
@@ -18,77 +32,32 @@
       "address": "Marathahalli",
       "city": "Bangalore",
       "state": "Karnataka",
-      "orderTotal": "12345",
       "id": 168902,
       "employeeId": "168902"
-    },
-    {
-      "firstName": "Harshita",
-      "lastName": "Mata",
-      "gender": "Female",
-      "address": "Kaggadasapura",
-      "city": "Bangalore",
-      "state": "Karnataka",
-      "orderTotal": "1234",
-      "id": 168903,
-      "employeeId": "168903"
-    },
-    {
-      "id": 168904,
-      "employeeId": "168904",
-      "firstName": "Vishal",
-      "lastName": "Gowda",
-      "gender": "Male",
-      "address": "Kammanahalli",
-      "city": "Bangalore",
-      "state": "Karnataka",
-      "orderTotal": "1234"
-    },
-    {
-      "firstName": "Vinod",
-      "lastName": "Kumar",
-      "gender": "Male",
-      "address": "KG Halli",
-      "city": "Bangalore",
-      "state": "Karnataka",
-      "orderTotal": "1234",
-      "id": 168906,
-      "employeeId": "168906"
-    },
-    {
-      "firstName": "",
-      "lastName": "",
-      "gender": "",
-      "address": "",
-      "city": "",
-      "state": "",
-      "orderTotal": "",
-      "id": 168907
-    },
-    {
-      "userName": "",
-      "password": "",
-      "id": 168908
-    },
-    {
-      "userName": "aaaaa",
-      "password": "123456789",
-      "id": 168909
     }
   ],
-  "Login": [
+  "date": [
     {
-      "userName": "vishnu@gmail.com",
-      "password": "ojXLzPt/RfApuwSOAdy7aw==",
-      "id": 1
-    }
-  ],
-  "Register": [
+      "employeeId": "168901",
+      "timeSpent": [
+        {
+          "inTime": "07:34 AM",
+          "outTime": "20:54 PM",
+          "totalDuration": "13:20:00 "
+        }
+      ],
+      "id": 168901
+    },
     {
-      "userName": "",
-      "email": "",
-      "password": "",
-      "id": 1
+      "employeeId": "",
+      "timeSpent": [
+        {
+          "inTime": "",
+          "outTime": "",
+          "totalDuration": "Invalid date"
+        }
+      ],
+      "id": 168902
     }
   ]
 }

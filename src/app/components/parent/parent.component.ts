@@ -24,6 +24,9 @@ export class ParentComponent implements OnInit {
     private dialog: MatDialog) { }
 
   ngOnInit() {
+    let date = this.cust.FindLastUpdatedTime(new Date().toString())
+    console.log(date);
+    
     this.bindData()
     if(this.activatedRoute.snapshot.data.type == 'addMode'){
       return;

@@ -17,6 +17,7 @@ import { GlobalheaderModule } from './components/globalheader/globalheader.modul
 import { LoginModule } from './components/login/login.module';
 import { EncryptpasswordService } from './services/encryptpassword.service';
 import { RegisterModule } from './components/register/register.module';
+import { AttendanceModule } from './components/attendance/attendance.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,6 +27,7 @@ import { RegisterModule } from './components/register/register.module';
     RegisterModule,
     ParentModule,
     ChildModule,
+    AttendanceModule,
 
     
     HttpClientModule,
