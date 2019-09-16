@@ -24,6 +24,14 @@ export class ParentComponent implements OnInit {
     private dialog: MatDialog) { }
 
   ngOnInit() {
+    this.cust.FindCountry().subscribe((r:any) => 
+      {
+        this.vm.CountryList = this.cust.FindCountryName(r)
+        
+        console.log(r[0]['name']);
+        
+      })
+
     let date = this.cust.FindLastUpdatedTime(new Date().toString())
     console.log(date);
     
@@ -118,5 +126,9 @@ export class ParentComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
     });
+  }
+
+  onCountrySelect(event: string) {
+    this.vm.cntry = event; 
   }
 }

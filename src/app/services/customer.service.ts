@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Customers } from '@app/models/customers.model';
 import { Observable } from 'rxjs';
 import * as moment from 'moment';
+import { CountryDropdownModel } from '@app/models/country.model';
 
 const headerOption = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -89,4 +90,27 @@ export class CustomerService {
     return moment(currentDate).format('DD MMM YY');
   }
 
+  public FindCountry(){
+    return this.http.get('http://localhost:3000/countries')
+  }
+
+  public FindCountryName(data: any): Array<CountryDropdownModel> {
+    // console.log(data);
+    
+    let list: Array<CountryDropdownModel> = new Array<CountryDropdownModel>();
+    list.push(new CountryDropdownModel('0', 'All'));
+    data.forEach((item: any) => {
+      list.push(new CountryDropdownModel(item.code, item.name));
+    });
+    return list;
+  }
+
+  // public FindCityCode(data: any): Array<CityDropdownModel> {
+  //   let list: Array<CityDropdownModel> = new Array<CityDropdownModel>();
+  //   list.push(new CityDropdownModel(0, 'All'));
+  //   data.forEach((item: any) => {
+  //     list.push(new CityDropdownModel(item.cityId, item.cityName));
+  //   });
+  //   return list;
+  // }
 }

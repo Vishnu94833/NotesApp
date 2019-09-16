@@ -50,6 +50,20 @@
 
         <div class="input-group mb-3">
             <div class="input-group-prepend">
+                <label class="input-group-text" for="Country">Country</label>
+            </div>
+            <select class="custom-select" id="Country" (change)="onCountrySelect($event.target.value)"
+                [(ngModel)]="vm.CountryList "             [ngStyle]="{'cursor': vm.isDeleteBtnDisplay ? 'not-allowed' : 'pointer'}"
+                [disabled]="vm.isDeleteBtnDisplay">
+
+                <option *ngFor="let item of vm.CountryList" value="{{ item.Value }}">
+                        {{ item.Label }}
+                      </option>
+            </select>
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1">Address</span>
             </div>
             <input class="form-control" type="text"             [ngStyle]="{'cursor': vm.isDeleteBtnDisplay ? 'not-allowed' : 'text'}"
