@@ -78,11 +78,7 @@ export class ChildComponent implements OnInit {
   }
   onSearch() {
     let searchTerm = this.vm.searchCustomer;
-    this.vm.customerList.filter(function (search) {
-      console.log(search.employeeId == searchTerm);
-
-      return search.employeeId == searchTerm
-    })
+    this.vm.customerList = this.cust.filter(this.vm.customerList, searchTerm)
   }
 
 }

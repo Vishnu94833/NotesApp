@@ -43,7 +43,7 @@ export class CustomerService {
     let res = {
       id: resp.employeeId,
       employeeId: resp.employeeId,
-      gender:resp.gender,
+      gender: resp.gender,
       firstName: resp.firstName,
       lastName: resp.lastName,
       address: resp.address,
@@ -51,7 +51,7 @@ export class CustomerService {
       state: resp.state,
       orderTotal: resp.orderTotal
     }
-    return this.http.post<Customers>(this.mockUrl, res  , headerOption);
+    return this.http.post<Customers>(this.mockUrl, res, headerOption);
   }
 
   deleteCustomerLogic(customerId: number, customerObject: any) {
@@ -68,10 +68,19 @@ export class CustomerService {
         return obj;
       }
     }
+
+    // let list :Array<Customers> = new Array<Customers>();
+    // // list.push(new CountryDropdownModel('0', 'All'));
+    // customerObject.forEach((item: any) => {
+    //   if (customerId == customerObject[i].employeeId){
+    //   list.push(item);
+
+    // });
+    // return list;
   }
 
-  getCustomerById(id:number): Observable<Customers>{
-    return this.http.get<Customers>(this.mockUrl+"/"+id)
+  getCustomerById(id: number): Observable<Customers> {
+    return this.http.get<Customers>(this.mockUrl + "/" + id)
   }
 
   deleteCustomer(id: number): Observable<Customers> {
@@ -79,7 +88,7 @@ export class CustomerService {
   }
 
   editCustomer(res: Customers): Observable<Customers> {
-    return this.http.put<Customers>(this.mockUrl + '/' + res.id,res, headerOption);
+    return this.http.put<Customers>(this.mockUrl + '/' + res.id, res, headerOption);
   }
 
   public FindLastUpdatedDate(currentDate: string): string {
@@ -90,20 +99,35 @@ export class CustomerService {
     return moment(currentDate).format('DD MMM YY');
   }
 
-  public FindCountry(){
+  public FindCountry() {
     return this.http.get('http://localhost:3000/countries')
   }
 
   public FindCountryName(data: any): Array<CountryDropdownModel> {
-    // console.log(data);
-    
+
     let list: Array<CountryDropdownModel> = new Array<CountryDropdownModel>();
     list.push(new CountryDropdownModel('0', 'All'));
     data.forEach((item: any) => {
+      // if (item.code == 'IN') {
       list.push(new CountryDropdownModel(item.code, item.name));
+      // }
     });
     return list;
   }
+
+  /* ************************** SAME AS ABOVE FUNC******************** */
+  // public FindCountryName(data: any): Array<CountryDropdownModel> {
+  //   let list: Array<CountryDropdownModel> = new Array<CountryDropdownModel>();
+  //   list.push(new CountryDropdownModel('0', 'All'));
+  //   return data.filter((r:any) => {
+  //     return r.code == 'IN'
+  //   })
+  // }
+
+
+
+
+
 
   // public FindCityCode(data: any): Array<CityDropdownModel> {
   //   let list: Array<CityDropdownModel> = new Array<CityDropdownModel>();
@@ -113,4 +137,16 @@ export class CustomerService {
   //   });
   //   return list;
   // }
+
+  filter(list: Array<Customers>, searchTerm: string): Array<Customers> {
+    if (searchTerm != '') {
+      return list.filter((item: Customers) => {
+        return item.firstName == searchTerm;
+      });
+    } else {
+      return list.filter((item: Customers) => {
+        return item; //default..
+      });
+    }
+  }
 }

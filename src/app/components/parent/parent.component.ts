@@ -27,13 +27,10 @@ export class ParentComponent implements OnInit {
     this.cust.FindCountry().subscribe((r:any) => 
       {
         this.vm.CountryList = this.cust.FindCountryName(r)
-        
-        console.log(r[0]['name']);
-        
+                // console.log(this.vm.CountryList);
       })
 
     let date = this.cust.FindLastUpdatedTime(new Date().toString())
-    console.log(date);
     
     this.bindData()
     if(this.activatedRoute.snapshot.data.type == 'addMode'){

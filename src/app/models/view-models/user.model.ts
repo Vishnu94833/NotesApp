@@ -8,7 +8,7 @@ export class UserLoginModel {
     public gender: Array<GenderDropdownModel> = new Array<GenderDropdownModel>();
     public CountryList : Array<CountryDropdownModel> = new Array<CountryDropdownModel>();
     cntry : string = '';
-    searchCustomer:any;
+    searchCustomer: string = '';
     customerId : number = 0;
     // buttons display
     isUpdateBtnDisplay: boolean = false;
