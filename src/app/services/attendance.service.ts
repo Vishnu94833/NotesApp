@@ -5,6 +5,8 @@ import { AttendanceModel } from '@app/models/attendance.model';
 import { Observable } from 'rxjs';
 import * as moment from 'moment';
 import { TimespentModel } from '@app/models/timespent.model';
+import { RestApiConstComponent } from 'rest-api-const.component';
+
 
 @Injectable({
   providedIn: 'root'

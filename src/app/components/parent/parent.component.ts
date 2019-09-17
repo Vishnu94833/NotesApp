@@ -27,7 +27,7 @@ export class ParentComponent implements OnInit {
     this.cust.FindCountry().subscribe((r:any) => 
       {
         this.vm.CountryList = this.cust.FindCountryName(r)
-                // console.log(this.vm.CountryList);
+                console.log(this.vm.CountryList);
       })
 
     let date = this.cust.FindLastUpdatedTime(new Date().toString())
@@ -125,7 +125,7 @@ export class ParentComponent implements OnInit {
     });
   }
 
-  onCountrySelect(event: string) {
-    this.vm.cntry = event; 
+  onCountrySelect(event: any) {
+    this.vm.cntry = event.Value; 
   }
 }

@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { LoginModel } from '@app/models/login.model';
 import { Observable } from 'rxjs';
+import { RestApiConstComponent } from 'rest-api-const.component';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -9,8 +11,6 @@ export class LoginService {
   private httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
-  mockUrl = 'http://localhost:3000/login';
-
 
   constructor(
     private _http: HttpClient,
@@ -21,7 +21,7 @@ export class LoginService {
       userName : res.userName,
       password : res.password
     }
-    return this._http.post<LoginModel>(this.mockUrl,request,this.httpOptions)
+    return this._http.post<LoginModel>(RestApiConstComponent.LOGIN_USER,request,this.httpOptions)
   }
 
   logout(){
@@ -29,6 +29,6 @@ export class LoginService {
   }
 
   getUsers():Observable<LoginModel>{
-    return this._http.get<LoginModel>(this.mockUrl)
+    return this._http.get<LoginModel>(RestApiConstComponent.LOGIN_USER)
   }
 }

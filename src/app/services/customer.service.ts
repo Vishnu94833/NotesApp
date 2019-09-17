@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Customers } from '@app/models/customers.model';
 import { Observable } from 'rxjs';
 import * as moment from 'moment';
+import { RestApiConstComponent } from 'rest-api-const.component';
 import { CountryDropdownModel } from '@app/models/country.model';
 
 const headerOption = {
@@ -16,10 +17,10 @@ export class CustomerService {
 
   constructor(private http: HttpClient) { }
 
-  mockUrl = 'http://localhost:3000/employees';
+  // mockUrl = 'http://localhost:3000/employees';
 
   getCustomers(): Observable<Customers> {
-    return this.http.get<Customers>(this.mockUrl)
+    return this.http.get<Customers>(RestApiConstComponent.CUSTOMERS)
   }
 
   public customers(response: any) {
@@ -51,7 +52,7 @@ export class CustomerService {
       state: resp.state,
       orderTotal: resp.orderTotal
     }
-    return this.http.post<Customers>(this.mockUrl, res, headerOption);
+    return this.http.post<Customers>(RestApiConstComponent.CUSTOMERS, res, headerOption);
   }
 
   deleteCustomerLogic(customerId: number, customerObject: any) {
@@ -80,15 +81,15 @@ export class CustomerService {
   }
 
   getCustomerById(id: number): Observable<Customers> {
-    return this.http.get<Customers>(this.mockUrl + "/" + id)
+    return this.http.get<Customers>(RestApiConstComponent.CUSTOMERS + "/" + id)
   }
 
   deleteCustomer(id: number): Observable<Customers> {
-    return this.http.delete<Customers>(this.mockUrl + '/' + id, headerOption);
+    return this.http.delete<Customers>(RestApiConstComponent.CUSTOMERS + '/' + id, headerOption);
   }
 
   editCustomer(res: Customers): Observable<Customers> {
-    return this.http.put<Customers>(this.mockUrl + '/' + res.id, res, headerOption);
+    return this.http.put<Customers>(RestApiConstComponent.CUSTOMERS + '/' + res.id, res, headerOption);
   }
 
   public FindLastUpdatedDate(currentDate: string): string {

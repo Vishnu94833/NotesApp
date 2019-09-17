@@ -20,14 +20,14 @@ export class DropdownWidgetComponent implements OnInit {
   constructor(private _service: DropdownWidgetComponentService) {}
 
   ngOnInit() {
-    console.log(this.datasource);
+    // console.log(_.first([5, 4, 3, 2, 1]));
     
     this.DropdownList = this._service.GenerateCollection(this.datasource, this.displayKey);
     
-    this.SelectedDropdownItem = _.first(this.DropdownList);
+    this.SelectedDropdownItem = this.DropdownList[0];
 
     if (this.selectedItem == null || this.selectedItem == undefined) {
-      this.SelectedDropdownItem = _.first(this.DropdownList);
+      this.SelectedDropdownItem = this.DropdownList[0];
     } else {
       this.SelectedDropdownItem = this._service.FindSelectedItemFromCollection(
         this.DropdownList,

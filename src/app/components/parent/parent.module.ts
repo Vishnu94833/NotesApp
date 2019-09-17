@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ParentRoutingModule } from './parent-routing.module';
@@ -14,6 +14,7 @@ import { DropdownWidgetModule } from '../dropdown-widget/dropdown-widget.module'
     DropdownWidgetModule,
     ParentRoutingModule
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   entryComponents: [ParentComponent]
 })
 export class ParentModule { }

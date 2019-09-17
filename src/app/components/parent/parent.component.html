@@ -48,7 +48,7 @@
             </select>
         </div>
 
-        <div class="input-group mb-3">
+        <!-- <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <label class="input-group-text" for="Country">Country</label>
             </div>
@@ -60,15 +60,15 @@
                         {{ item.Label }}
                       </option>
             </select>
-        </div>
+        </div> -->
 
-        
-        <!-- <dropdown-widget
+
+        <dropdown-widget
         [datasource]="vm.CountryList"
-        [myClass]="'select-report-type'"
-        [displayKey]="'Label'"
+        [myClass]=""
+        [displayKey]="'Value'"
         (onDropdownSelect)="onCountrySelect($event)">                
-        </dropdown-widget> -->
+        </dropdown-widget>
 
         <div class="input-group mb-3">
             <div class="input-group-prepend">

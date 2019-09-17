@@ -18,8 +18,6 @@ import { LoginModule } from './components/login/login.module';
 import { EncryptpasswordService } from './services/encryptpassword.service';
 import { RegisterModule } from './components/register/register.module';
 import { AttendanceModule } from './components/attendance/attendance.module';
-import { TwoModule } from './components/two/two.module';
-import { OneModule } from './components/one/one.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -29,8 +27,6 @@ import { OneModule } from './components/one/one.module';
     RegisterModule,
     ParentModule,
     ChildModule,
-    TwoModule,
-    OneModule,
     AttendanceModule,
 
     

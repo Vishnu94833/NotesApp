@@ -20,11 +20,7 @@ export class DropdownWidgetComponentService {
     return list;
   }
 
-  public FindSelectedItemFromCollection(
-    list: Array<DropdownWidgetModel>,
-    activeItem: any,
-    displayKey: string
-  ): DropdownWidgetModel {
+  public FindSelectedItemFromCollection(list: Array<DropdownWidgetModel>,activeItem: any,displayKey: string): DropdownWidgetModel {
     let model: DropdownWidgetModel = null;
     model = _.find(list, function(item: DropdownWidgetModel) {
       return item.Title == activeItem[displayKey];
