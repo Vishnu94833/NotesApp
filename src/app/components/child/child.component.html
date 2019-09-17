@@ -16,7 +16,7 @@
             <input class="form-control "
             [(ngModel)]="vm.searchCustomer"
             type="text"
-            (keyup.enter)="onSearch()">
+            (input)="onSearch()">
         </div>
         <h2>{{marvelHeroes | json}}</h2>
         <button class="btn btn-dark" (click)='addNewCustomer()'>Add New Customer</button>

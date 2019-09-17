@@ -20,6 +20,14 @@ const routes: Routes = [
         loadChildren: 'app/components/child/child.module#ChildModule'
       },
       {
+        path: 'one',
+        loadChildren: 'app/components/one/one.module#OneModule'
+      },
+      {
+        path: 'two',
+        loadChildren: 'app/components/two/two.module#TwoModule'
+      },
+      {
         path: 'customer/:id',
         loadChildren: 'app/components/parent/parent.module#ParentModule'
       },

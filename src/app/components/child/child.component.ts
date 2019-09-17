@@ -75,6 +75,7 @@ export class ChildComponent implements OnInit {
 
   bindData(data: any) {
     this.data.changeMessage(data)
+    this.onSearch()
   }
   onSearch() {
     let searchTerm = this.vm.searchCustomer;

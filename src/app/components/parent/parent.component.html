@@ -62,11 +62,19 @@
             </select>
         </div>
 
+        
+        <!-- <dropdown-widget
+        [datasource]="vm.CountryList"
+        [myClass]="'select-report-type'"
+        [displayKey]="'Label'"
+        (onDropdownSelect)="onCountrySelect($event)">                
+        </dropdown-widget> -->
+
         <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1">Address</span>
             </div>
-            <input class="form-control" type="text"             [ngStyle]="{'cursor': vm.isDeleteBtnDisplay ? 'not-allowed' : 'text'}"
+            <input class="form-control" type="text" [ngStyle]="{'cursor': vm.isDeleteBtnDisplay ? 'not-allowed' : 'text'}"
             [(ngModel)]='vm.newEmployee.address' [disabled]="vm.isDeleteBtnDisplay">
         </div>
 

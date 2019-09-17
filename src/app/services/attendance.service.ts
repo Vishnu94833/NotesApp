@@ -31,7 +31,7 @@ export class AttendanceService {
         }
       ]
     }
-    return this.http.put<AttendanceModel>(`${this.baseUrl}` + 'date/' + 168901, request, this.httpOptions)
+    return this.http.put<AttendanceModel>(`${this.baseUrl}` + 'date/' + res.employeeId, request, this.httpOptions)
   }
 
   getAttendances(): Observable<AttendanceModel> {

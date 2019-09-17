@@ -30,9 +30,9 @@ export class AttendanceComponent implements OnInit {
     this.vm.attendnce.inTime = res.inTime;
     this.vm.attendnce.outTime = res.outTime;
     this.vm.attendnce.totalWorkingHrs = totalTime;
-    // this.attendanceService.postAttendance(this.vm.attendnce).subscribe(response => {
-    //   this.vm.attendnce = this.vm.aaaa
-    // })
+    this.attendanceService.postAttendance(this.vm.attendnce).subscribe(response => {
+      this.vm.attendnce = this.vm.aaaa
+    })
     // this.attendanceService.postById(this.vm.attendnce).subscribe((res:any) => {
     //   console.log(res);
       
