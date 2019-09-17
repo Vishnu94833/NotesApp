@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-globalheader',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GlobalheaderComponent implements OnInit {
 
-  constructor() { }
+  private isDisplayNavBar : boolean = true;
+  constructor(private route:Router,private activatedRoute:ActivatedRoute) { }
 
   ngOnInit() {
+    if(this.route.url.includes('login') || this.route.url.includes('register')){
+      this.isDisplayNavBar = false
+    }
   }
 
 }

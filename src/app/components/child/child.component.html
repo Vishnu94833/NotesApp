@@ -5,8 +5,6 @@
     </div>
 
     <div class="filter-container my-3">
-
-        <!-- <input class="form-control filter-width" name='filter' type="filter"> -->
         <div class="input-group mb-3 filter-width">
             <div class="input-group-prepend">
                 <div class="input-group-text">
@@ -33,7 +31,6 @@
                 <th>Address</th>
                 <th>City</th>
                 <th>State</th>
-                <th>Order Total</th>
                 <th></th>
                 <th></th>
             </tr>
@@ -47,7 +44,6 @@
                 <td>{{users.address}}</td>
                 <td>{{users.city}}</td>
                 <td>{{users.state}}</td>
-                <td>{{users.orderTotal}}</td>
                 <td> <span class="far fa-edit" (click)="editCustomer(users)"></span></td>
                 <td><span class="fa fa-trash" (click)="deleteCustomer(users)"></span></td>
             </tr>

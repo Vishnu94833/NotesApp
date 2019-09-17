@@ -1,5 +1,7 @@
 <div class="card my-5 col-6 login-page">
+    
     <div class="container my-5">
+            <h3 class="text-center">Login</h3>
         <div class="form-group">
             <label for="userId">Username:</label>
             <input 
@@ -16,7 +18,7 @@
             class="form-control"
             [(ngModel)]='vm.loginCredentials.password'>
         </div>
-        <!-- <button class="btn btn-block btn-block" (click)='login(vm.loginCredentials)'>Login</button> -->
-        <button (click)='goToRegister()'>register</button>
+        <button class="btn btn-block " (click)='login(vm.loginCredentials)'>Login</button>
+        <button class="btn btn-block btn-dark" (click)='goToRegister()'>register</button>
     </div>
 </div>

@@ -12,6 +12,7 @@
             [ngStyle]="{'cursor': vm.isDeleteBtnDisplay ? 'not-allowed' : 'text'}"
             [(ngModel)]='vm.newEmployee.employeeId'
             [disabled]="vm.isDeleteBtnDisplay"
+            
             >
         </div>
         <div class="input-group mb-3">
@@ -63,12 +64,12 @@
         </div> -->
 
 
-        <dropdown-widget
+        <!-- <dropdown-widget
         [datasource]="vm.CountryList"
         [myClass]=""
         [displayKey]="'Value'"
         (onDropdownSelect)="onCountrySelect($event)">                
-        </dropdown-widget>
+        </dropdown-widget> -->
 
         <div class="input-group mb-3">
             <div class="input-group-prepend">
@@ -94,15 +95,6 @@
             </div>
             <input class="form-control" type="text"             [ngStyle]="{'cursor': vm.isDeleteBtnDisplay ? 'not-allowed' : 'text'}"
             [(ngModel)]='vm.newEmployee.state' [disabled]="vm.isDeleteBtnDisplay">
-        </div>
-
-
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">Order Total</span>
-            </div>
-            <input class="form-control" type="text"             [ngStyle]="{'cursor': vm.isDeleteBtnDisplay ? 'not-allowed' : 'text'}"
-            [(ngModel)]='vm.newEmployee.orderTotal' [disabled]="vm.isDeleteBtnDisplay">
         </div>
 
     </div>
