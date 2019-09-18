@@ -1,0 +1,48 @@
+<!-- <div class="card container my-5 text-center">
+    <div class="my-5">
+        <div class="profile-userpic">
+            <img src="" class="img-responsive" alt="KV" width="50px" height="50px">
+        </div>
+
+        <div class="form-group">
+            <label for="empId">Employee Id:</label>
+            <input class="form-control" type="text" name="empid" [(ngModel)]='employeeId'>
+        </div>
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input class="form-control" type="text" name="name" [(ngModel)]='name'>
+        </div>
+        <div class="form-group">
+            <label for="role">Role:</label>
+            <input class="form-control" type="text" name="role" [(ngModel)]='role'>
+        </div>
+
+        <div >
+            <button class="btn btn-dark float-left">View Attendance</button>
+
+            <button class="btn btn-default float-right" routerLink='attendance'>Add Attendance</button>
+        </div>
+    </div>
+</div> -->
+
+<div class="container my-5">
+        <div class="my-3">
+                <table class="table table-striped table-bordered">
+                    <tr>
+                        <th>Date</th>
+                        <th>In Time</th>
+                        <th>Out Time</th>
+                        <th>Total Working Hours</th>
+                        <!-- <th></th> -->
+                    </tr>
+                    <tr *ngFor='let attendance of vm.attendance;let i = index'>
+                        
+                        <td>{{attendance.date}}</td>
+                        <td>{{attendance.inTime}}</td>
+                        <td>{{attendance.outTime}}</td>
+                        <td>{{attendance.totalWorkingHrs}}</td>
+                    </tr>
+                </table>
+            </div>
+
+</div>

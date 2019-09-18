@@ -13,28 +13,51 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   userName: string;
-  pswd: string;
+  pswd: string = '123456789';
   public vm: LoginViewModel = new LoginViewModel();
 
-  constructor(private loginService: LoginService, 
+  constructor(private loginService: LoginService,
     private pswdEncrypt: EncryptpasswordService,
-    private route:Router) { }
+    private route: Router) { }
 
   ngOnInit() {
-    this.loginService.getUsers().subscribe(res => console.log(res))
+    localStorage.setItem('token',this.pswd)
+   
   }
 
   login(response: LoginModel) {
-    let passwordEncrypted = this.pswdEncrypt.set("0123456789123456", response.password);
-    this.vm.loginResponse.userName = response.userName;
-    this.vm.loginResponse.password = passwordEncrypted;
-    this.loginService.login(this.vm.loginResponse).subscribe((res: any) => {
-      console.log(res);
-    })
-
+    if (this.vm.loginCredentials.userName.length == 0) {
+      this.vm.isDisplayUserName = this.vm.loginCredentials.userName.length == 0 ? true : false;
+    } else if (this.vm.loginCredentials.password == '') {
+      this.vm.isDisplayPassword = this.vm.loginCredentials.password.length == 0 ? true : false;
+    } else {
+      let passwordEncrypted = this.pswdEncrypt.set("0123456789123456", response.password);
+      this.vm.loginResponse.userName = response.userName;
+      this.vm.loginResponse.password = passwordEncrypted;
+      this.loginService.login(this.vm.loginResponse).subscribe((res: any) => {
+        console.log(res);
+      })
+    }
   }
 
-  goToRegister(){
+  loginPost(response: LoginModel){
+    this.loginService.getUsers().subscribe(res => {
+      let passwordEncrypted = this.pswdEncrypt.set("0123456789123456", response.password);
+      this.vm.loginResponse.userName = response.userName;
+      this.vm.loginResponse.password = passwordEncrypted;
+      debugger
+      if(this.vm.loginResponse.userName === res.userName ){
+        debugger
+        console.log("success*******");
+        if(this.vm.loginResponse.password !== res.password){
+          debugger
+          console.log("success*******");
+        }
+      }
+    })
+  }
+
+  goToRegister() {
     this.route.navigateByUrl('register')
   }
 }

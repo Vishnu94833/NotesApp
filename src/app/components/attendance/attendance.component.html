@@ -2,27 +2,21 @@
     <div class="container my-5">
         <div class="form-group">
             <label for="empId">Employee ID:</label>
-            <input 
-            type="text" 
-            name="empId" 
-            class="form-control"
-            [(ngModel)]='vm.attendnce.employeeId'>
+            <input type="text" name="empId" class="form-control" [(ngModel)]='vm.attendnce.employeeId' disabled>
+        </div>
+
+
+        <div class="form-group">
+            <label for="date">Date:</label>
+            <input type="date" name="date" class="form-control" [(ngModel)]='vm.attendnce.date'>
         </div>
         <div class="form-group">
-                <label for="iTime">In Time:</label>
-                <input 
-                type="time" 
-                name="iTime" 
-                class="form-control"
-                [(ngModel)]='vm.attendnce.inTime'>
-            </div>
+            <label for="iTime">In Time:</label>
+            <input type="time" name="iTime" class="form-control" [(ngModel)]='vm.attendnce.inTime'>
+        </div>
         <div class="form-group">
             <label for="oTime">Out Time:</label>
-            <input 
-            type="time" 
-            name="oTime" 
-            class="form-control"
-            [(ngModel)]='vm.attendnce.outTime'>
+            <input type="time" name="oTime" class="form-control" [(ngModel)]='vm.attendnce.outTime'>
         </div>
         <button class="btn btn-block btn-block" (click)='submit(vm.attendnce)'>Submit</button>
     </div>

@@ -18,6 +18,7 @@ import { LoginModule } from './components/login/login.module';
 import { EncryptpasswordService } from './services/encryptpassword.service';
 import { RegisterModule } from './components/register/register.module';
 import { AttendanceModule } from './components/attendance/attendance.module';
+import { HomepageModule } from './components/homepage/homepage.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,6 +28,7 @@ import { AttendanceModule } from './components/attendance/attendance.module';
     RegisterModule,
     ParentModule,
     ChildModule,
+    HomepageModule,
     AttendanceModule,
 
     

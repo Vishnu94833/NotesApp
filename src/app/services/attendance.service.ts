@@ -4,8 +4,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AttendanceModel } from '@app/models/attendance.model';
 import { Observable } from 'rxjs';
 import * as moment from 'moment';
-import { TimespentModel } from '@app/models/timespent.model';
 import { RestApiConstComponent } from 'rest-api-const.component';
+import { HomepageModel } from '@app/models/homepage.model';
 
 
 @Injectable({
@@ -21,41 +21,46 @@ export class AttendanceService {
   constructor(private http: HttpClient) { }
 
   postAttendance(res: AttendanceModel): Observable<AttendanceModel> {
-    console.log(moment(res.inTime, ["h:mm A"]).format("HH:mm A"));
-
     let request = {
-      employeeId: res.employeeId,
-      timeSpent: [
-        {
-          inTime: moment(res.inTime, ["h:mm A"]).format("HH:mm A"),
-          outTime: moment(res.outTime, ["h:mm A"]).format("HH:mm A"),
-          totalDuration: res.totalWorkingHrs
-        }
-      ]
+      date: moment(res.date).format("DD MMM YYYY"),
+      inTime : moment(res.inTime, "HH:mm:ss ").format("HH:mm A"),
+      outTime: moment(res.outTime, "HH:mm:ss ").format("HH:mm A"),
+      totalTime : res.totalWorkingHrs
     }
-    return this.http.put<AttendanceModel>(`${this.baseUrl}` + 'date/' + res.employeeId, request, this.httpOptions)
+    return this.http.post<AttendanceModel>(`${this.baseUrl}/` + res.userName, request, this.httpOptions)
   }
 
-  getAttendances(): Observable<AttendanceModel> {
-    return this.http.get<AttendanceModel>(`${this.baseUrl}` + 'date')
+  getAttendances(res : string): Observable<AttendanceModel> {
+    return this.http.get<AttendanceModel>(`${this.baseUrl}/`+ res)
   }
 
   timeDuration(startTime: any, endTime: any) {
-    let mins = moment.utc(moment(endTime, "HH:mm:ss").diff(moment(startTime, "HH:mm:ss"))).format("HH:mm:ss ")
-    var duration = moment.duration(moment(endTime, "HH:mm:ss").diff(moment(startTime, "HH:mm:ss")));
-    var hours = duration.asHours();
-    console.log(hours);
-    
+    let mins = moment.utc(moment(endTime, "HH:mm:ss ").diff(moment(startTime, "HH:mm:ss"))).format("HH ")
     return mins;
   }
 
-  postById(res: AttendanceModel): Observable<TimespentModel> {
-    let response = {
-      inTime: moment.utc(moment(res.inTime, "HH:mm:ss ")).format("HH:mm:ss A"),
-      outTime: moment(res.outTime).format("dddd, MMMM Do YYYY, h:mm:ss a"),
-      totalDuration: res.totalWorkingHrs
-    }
-    return this.http.post<TimespentModel>(`${this.baseUrl}` + 'date/' + 168901, response, this.httpOptions)
+  attendanceData(response:any){
+    let list : Array<HomepageModel> = new Array<HomepageModel>();
+    response.forEach((item: any) => {
+      let obj = new HomepageModel();
+      // obj.employeeId = item.employeeId
+      obj.date = item.date
+      obj.inTime = item.inTime
+      obj.outTime = item.outTime
+      obj.totalWorkingHrs = item.totalTime
+      // obj.userName = item.userName
+      // obj.avgWorkingHrs = item.avgWorkingHrs
+      
+      list.push(obj)
+    });
+    return list;
+  }
 
+  clearAttendanceData(res:string,id:number){
+    return this.http.delete(`${this.baseUrl}/` + res+'/'+id)
+  }
+
+  validDate(){
+    
   }
 }

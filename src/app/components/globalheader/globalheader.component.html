@@ -1,18 +1,15 @@
 <nav class="navbar navbar-expand-sm bg-dark" *ngIf='isDisplayNavBar'>
-    <!-- <div class="global-header-class"> -->
     <div class="align-content-center float-left">
         <img src="../../../assets/images/users.png" width='40px' height="40px">
         <span class="text-white title-customer-manager">Customer Manager</span>
 
     </div>
-    <div class="float-right">
+    <!-- <div class="float-right">
         <button mat-fab class="bg-light float-right" [matMenuTriggerFor]="menu">Basic</button>
-    </div>
+    </div> -->
 
     <mat-menu #menu="matMenu">
         <button mat-menu-item>Logout</button>
-        <!-- <button mat-menu-item>Item 2</button> -->
     </mat-menu>
-    <!-- </div> -->
 </nav>
 <router-outlet></router-outlet>

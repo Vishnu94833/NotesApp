@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AttendanceViewModel } from '@app/models/view-models/attendance.view.model';
 import { AttendanceService } from '@app/services/attendance.service';
 import { AttendanceModel } from '@app/models/attendance.model';
+import { DataService } from '@app/services/dataservice.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-attendance',
@@ -11,31 +13,33 @@ import { AttendanceModel } from '@app/models/attendance.model';
 export class AttendanceComponent implements OnInit {
 
   public vm: AttendanceViewModel = new AttendanceViewModel();
-
-  constructor(private attendanceService: AttendanceService) { }
+  userName: string = '';
+  constructor(private route: Router, private attendanceService: AttendanceService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    this.attendanceService.getAttendances().subscribe(response => {
-      console.log(response);
+    this.userName = this.activatedRoute.snapshot.queryParamMap.get('userName')
+    let employee = this.activatedRoute.snapshot.params
+    this.vm.attendnce.userName = this.userName
+    this.vm.attendnce.employeeId = employee.id;
+    this.attendanceService.getAttendances(this.userName).subscribe((res: any) => {
+      this.vm.aaaa = res;
     })
-    this.vm.attendnce.employeeId
-    this.vm.attendnce.inTime
-    this.vm.attendnce.outTime
-    this.vm.attendnce.totalWorkingHrs
   }
 
   submit(res: AttendanceModel) {
-    let totalTime = this.attendanceService.timeDuration(res.inTime, res.outTime)
-    this.vm.attendnce.employeeId = res.employeeId;
+    let totalTime = this.attendanceService.timeDuration(res.inTime, res.outTime);
     this.vm.attendnce.inTime = res.inTime;
+    this.vm.attendnce.date = res.date;
     this.vm.attendnce.outTime = res.outTime;
-    this.vm.attendnce.totalWorkingHrs = totalTime;
-    this.attendanceService.postAttendance(this.vm.attendnce).subscribe(response => {
-      this.vm.attendnce = this.vm.aaaa
-    })
-    // this.attendanceService.postById(this.vm.attendnce).subscribe((res:any) => {
-    //   console.log(res);
-      
-    // })
+    this.vm.attendnce.totalWorkingHrs = parseInt(totalTime) < 2 ? totalTime + ' Hour' : totalTime + ' Hours';
+    this.addAttendance(this.vm.attendnce)
   }
+
+  addAttendance(res: AttendanceModel) {
+    this.attendanceService.postAttendance(res).subscribe(response => {
+      this.route.navigate(['customers'])
+    })
+  }
+
+
 }

@@ -23,6 +23,14 @@ const routes: Routes = [
         path: 'customer/:id',
         loadChildren: 'app/components/parent/parent.module#ParentModule'
       },
+      {
+        path: 'attendance/:id',
+        loadChildren: 'app/components/attendance/attendance.module#AttendanceModule'
+      },
+      {
+        path: 'homepage',
+        loadChildren: 'app/components/homepage/homepage.module#HomepageModule'
+      },
       // Fallback when no prior route is matched
       { path: '', redirectTo: '/login', pathMatch: 'full' }
   ])

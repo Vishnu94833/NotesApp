@@ -28,6 +28,8 @@ export class ChildComponent implements OnInit {
   bindCustomers() {
     this.cust.getCustomers().subscribe(res => {
       this.vm.customerList = this.cust.customers(res)
+      // console.log(this.vm.customerList);
+      
     })
   }
 
@@ -82,4 +84,10 @@ export class ChildComponent implements OnInit {
     this.vm.customerList = this.cust.filter(this.vm.customerList, searchTerm)
   }
 
+  addAttendance(name:string,id :string){
+    this.route.navigate(['attendance',id],{ queryParams: { userName: name } })
+  }
+  goToHomePage(name:string,id :string){
+    this.route.navigate(['homepage'],{ queryParams: { attendanceFor: name } })
+  }
 }
