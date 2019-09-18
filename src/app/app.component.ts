@@ -4,6 +4,7 @@ import { Title } from '@angular/platform-browser';
 import { merge } from 'rxjs';
 import { filter, map, mergeMap } from 'rxjs/operators';
 import { CustomerService } from './services/customer.service';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-root',
@@ -16,11 +17,17 @@ export class AppComponent implements OnInit {
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private titleService: Title
+    private titleService: Title,
+    private angularFireAuth:AngularFireAuth
   ) {
 
   }
   ngOnInit() {
+
+    this.angularFireAuth.authState.subscribe(res => {
+      console.log(res);
+      
+    })
 
     const onNavigationEnd = this.router.events.pipe(filter(event => event instanceof NavigationEnd));
 

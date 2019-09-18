@@ -3,7 +3,9 @@ import { NgModule, NO_ERRORS_SCHEMA,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
-
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -30,8 +32,9 @@ import { HomepageModule } from './components/homepage/homepage.module';
     ChildModule,
     HomepageModule,
     AttendanceModule,
-
-    
+ 
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule,
     HttpClientModule,
     MaterialModule,
     BrowserModule,

@@ -4,7 +4,16 @@
 
 export const environment = {
   production: false,
-  apiBaseUrl: 'http://localhost:3000'
+  apiBaseUrl: 'http://localhost:3000',
+  firebaseConfig: {
+    apiKey: "AIzaSyCW8OVj3nWY2QpMa1IeHA4ll-asSHEi8lM",
+    authDomain: "customer-manager-75be4.firebaseapp.com",
+    databaseURL: "https://customer-manager-75be4.firebaseio.com",
+    projectId: "customer-manager-75be4",
+    storageBucket: "",
+    messagingSenderId: "1040521249344",
+    appId: "1:1040521249344:web:dd8c5459c979e459a415a5"
+  }
 
 };
 

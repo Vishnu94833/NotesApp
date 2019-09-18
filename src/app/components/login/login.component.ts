@@ -5,6 +5,7 @@ import { LoginViewModel } from '@app/models/view-models/login.view.model';
 import { LoginModel } from '@app/models/login.model';
 import { EncryptpasswordService } from '@app/services/encryptpassword.service';
 import { Router } from '@angular/router';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private loginService: LoginService,
     private pswdEncrypt: EncryptpasswordService,
-    private route: Router) { }
+    private route: Router,
+    private angularFireAuth:AngularFireAuth) { }
 
   ngOnInit() {
     localStorage.setItem('token',this.pswd)
@@ -26,18 +28,21 @@ export class LoginComponent implements OnInit {
   }
 
   login(response: LoginModel) {
-    if (this.vm.loginCredentials.userName.length == 0) {
-      this.vm.isDisplayUserName = this.vm.loginCredentials.userName.length == 0 ? true : false;
-    } else if (this.vm.loginCredentials.password == '') {
-      this.vm.isDisplayPassword = this.vm.loginCredentials.password.length == 0 ? true : false;
-    } else {
-      let passwordEncrypted = this.pswdEncrypt.set("0123456789123456", response.password);
+    // if (this.vm.loginCredentials.userName.length == 0) {
+    //   this.vm.isDisplayUserName = this.vm.loginCredentials.userName.length == 0 ? true : false;
+    // } else if (this.vm.loginCredentials.password == '') {
+    //   this.vm.isDisplayPassword = this.vm.loginCredentials.password.length == 0 ? true : false;
+    // } else {
+    //   let passwordEncrypted = this.pswdEncrypt.set("0123456789123456", response.password);
       this.vm.loginResponse.userName = response.userName;
-      this.vm.loginResponse.password = passwordEncrypted;
-      this.loginService.login(this.vm.loginResponse).subscribe((res: any) => {
-        console.log(res);
-      })
-    }
+      this.vm.loginResponse.password = response.password;
+    //   this.loginService.login(this.vm.loginResponse).subscribe((res: any) => {
+    //     console.log(res);
+    //   })
+    // }
+    this.angularFireAuth.auth.signInWithEmailAndPassword(this.vm.loginResponse.userName,this.vm.loginResponse.password)
+    console.log(this.angularFireAuth.auth.signInWithEmailAndPassword(this.vm.loginResponse.userName,this.vm.loginResponse.password))
+
   }
 
   loginPost(response: LoginModel){
