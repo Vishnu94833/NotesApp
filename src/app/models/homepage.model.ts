@@ -4,4 +4,5 @@ export class HomepageModel{
     outTime : string = '';
     date : string = '';
     totalWorkingHrs : string = '';
+    avgWorkingHrs:number = 0;
 }

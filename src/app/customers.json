@@ -64,69 +64,21 @@
   ],
   "Vishnu": [
     {
-      "date": "2019-09-18",
+      "date": "18 Sep 2019",
       "inTime": "08:30 AM",
-      "outTime": "19:30 PM",
-      "totalTime": "11  Hours",
+      "outTime": "18:25 PM",
+      "totalTime": "09  Hours",
+      "totalWorkingTime": 9,
       "id": 1
     },
     {
-      "date": "2019-09-19",
-      "inTime": "08:30 AM",
-      "outTime": "18:54 PM",
-      "totalTime": "10  Hours",
-      "id": 2
-    },
-    {
-      "date": "2019-09-20",
-      "inTime": "09:36 AM",
-      "outTime": "19:48 PM",
-      "totalTime": "10  Hours",
-      "id": 3
-    },
-    {
-      "date": "Sep 21 19",
-      "inTime": "08:16 AM",
-      "outTime": "18:54 PM",
-      "totalTime": "10  Hours",
-      "id": 4
-    },
-    {
-      "date": "Sep  19",
+      "date": "20 Sep 2019",
       "inTime": "08:56 AM",
-      "outTime": "21:56 PM",
-      "totalTime": "13  Hours",
-      "id": 5
-    },
-    {
-      "date": "17 Sep 2019",
-      "inTime": "08:06 AM",
-      "outTime": "16:56 PM",
-      "totalTime": "08  Hours",
-      "id": 6
+      "outTime": "20:50 PM",
+      "totalTime": "11  Hours",
+      "totalWorkingTime": 11,
+      "id": 2
     }
   ],
-  "Vishal": [
-    {
-      "date": "2019-09-18",
-      "inTime": "08:30 AM",
-      "outTime": "19:30 PM",
-      "totalTime": "11  Hours",
-      "id": 1
-    },
-    {
-      "date": "19 Sep 2019",
-      "inTime": "08:30 AM",
-      "outTime": "18:00 PM",
-      "totalTime": "09  Hours",
-      "id": 2
-    },
-    {
-      "date": "Invalid date",
-      "inTime": "Invalid date",
-      "outTime": "Invalid date",
-      "totalTime": "Invalid date Hours",
-      "id": 3
-    }
-  ]
+  "Vishal": []
 }

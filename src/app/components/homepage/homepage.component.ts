@@ -19,13 +19,13 @@ export class HomepageComponent implements OnInit {
   ngOnInit() {
     this.bindAttendanceData();
     console.log(moment().daysInMonth());
-
   }
 
   bindAttendanceData() {
     let userName = this.activatedRoute.snapshot.queryParamMap.get('attendanceFor')
     this.attendanceService.getAttendances(userName).subscribe(response => {
       this.vm.attendance = this.attendanceService.attendanceData(response);
+      this.avgWorkingHrs(this.vm.attendance)
       this.deleteAttendanceData(this.vm.attendance, userName)
     })
   }
@@ -38,6 +38,14 @@ export class HomepageComponent implements OnInit {
         })
       }
     }
+  }
+
+  avgWorkingHrs(res: any) {
+    for (let i = 0; i <= res.length - 1; i++) {
+      this.vm.avgWrk.avgWorkingHrs += res[i].avgWorkingHrs;
+    }
+    let arrayLength = res.length;
+    this.vm.avgWrk.avgWorkingHrs /= arrayLength;
   }
 
 }

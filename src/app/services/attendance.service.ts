@@ -25,7 +25,8 @@ export class AttendanceService {
       date: moment(res.date).format("DD MMM YYYY"),
       inTime : moment(res.inTime, "HH:mm:ss ").format("HH:mm A"),
       outTime: moment(res.outTime, "HH:mm:ss ").format("HH:mm A"),
-      totalTime : res.totalWorkingHrs
+      totalTime : res.totalWorkingHrs,
+      totalWorkingTime:res.totalWorkingHours
     }
     return this.http.post<AttendanceModel>(`${this.baseUrl}/` + res.userName, request, this.httpOptions)
   }
@@ -48,8 +49,7 @@ export class AttendanceService {
       obj.inTime = item.inTime
       obj.outTime = item.outTime
       obj.totalWorkingHrs = item.totalTime
-      // obj.userName = item.userName
-      // obj.avgWorkingHrs = item.avgWorkingHrs
+      obj.avgWorkingHrs = item.totalWorkingTime
       
       list.push(obj)
     });
@@ -61,6 +61,6 @@ export class AttendanceService {
   }
 
   validDate(){
-    
+
   }
 }

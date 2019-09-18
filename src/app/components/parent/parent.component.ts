@@ -25,9 +25,7 @@ export class ParentComponent implements OnInit {
     private dialog: MatDialog) { }
 
   ngOnInit() {
-    this.cust.FindCountry().subscribe((r: any) => {
-      this.vm.CountryList = this.cust.FindCountryName(r)
-    })
+   
 
     let date = this.cust.FindLastUpdatedTime(new Date().toString())
 
@@ -66,7 +64,12 @@ export class ParentComponent implements OnInit {
       console.error('error');
 
     } else {
-      this.cust.addCustomer(message).subscribe(res => console.log(res))
+      this.cust.addCustomer(message).subscribe(res => { 
+        // console.log(res) ;
+        this.cust.createArray(res.firstName).subscribe(result => {
+          console.log(result);
+        })
+      })
       this.routeBackToCustomers()
     }
   }

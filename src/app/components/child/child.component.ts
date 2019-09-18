@@ -22,6 +22,10 @@ export class ChildComponent implements OnInit {
   ngOnInit() {
     this.data.currentMessage.subscribe(message => message)
     this.bindCustomers();
+    let resp = {
+      
+    }
+    console.log(JSON.stringify(resp));
   }
 
 

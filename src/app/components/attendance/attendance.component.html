@@ -2,7 +2,9 @@
     <div class="container my-5">
         <div class="form-group">
             <label for="empId">Employee ID:</label>
-            <input type="text" name="empId" class="form-control" [(ngModel)]='vm.attendnce.employeeId' disabled>
+            <input type="text" name="empId" class="form-control" 
+            [ngStyle]="{'cursor':'not-allowed' }"
+            [(ngModel)]='vm.attendnce.employeeId' disabled>
         </div>
 
 

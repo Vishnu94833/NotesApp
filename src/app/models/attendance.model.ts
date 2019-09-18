@@ -8,5 +8,6 @@ export class AttendanceModel{
     date : string = '';
     totalWorkingHrs : string = '';
     avgWorkingHrs : string = '';
+    totalWorkingHours : number = 0;
     
 }

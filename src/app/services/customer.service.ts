@@ -17,7 +17,7 @@ export class CustomerService {
 
   constructor(private http: HttpClient) { }
 
-  // mockUrl = 'http://localhost:3000/employees';
+  mockUrl = 'http://localhost:3000/employees';
 
   getCustomers(): Observable<Customers> {
     return this.http.get<Customers>(RestApiConstComponent.CUSTOMERS)
@@ -53,6 +53,16 @@ export class CustomerService {
       orderTotal: resp.orderTotal
     }
     return this.http.post<Customers>(RestApiConstComponent.CUSTOMERS, res, headerOption);
+  }
+
+  createArray(res:string){
+    let resp = {
+      res : Array
+    }
+    console.log(JSON.stringify(resp));
+    
+    return this.http.post(this.mockUrl+'/'+res, res, headerOption);
+
   }
 
   deleteCustomerLogic(customerId: number, customerObject: any) {
